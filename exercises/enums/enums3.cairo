@@ -55,18 +55,10 @@ impl StateImpl of StateTrait {
         ref self: State, message: Message
     ) { // TODO: create a match expression to process the different message variants
         match message {
-            Message::Quit => {
-                quit(self);
-            },
-            Message::Move(p) => {
-                move_position(self, p);
-            },
-            Message::Echo(s) => {
-                echo(self, s);
-            },
-            Message::ChangeColor(c) => {
-                change_color(self, c);
-            },
+            Message::Quit => self.quit(),
+            Message::Move(p) => self.move_position(p),
+            Message::Echo(s) => self.echo(s),
+            Message::ChangeColor(c) => self.change_color(c),
         }
     }
 }
